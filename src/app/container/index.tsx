@@ -18,7 +18,7 @@ const WeatherDsiplay = () => {
     setCountry(value);
   };
 
-  const handleSubmit = (event: Event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
     if (!country || country.trim() === "") {
       setMessage("Por favor ingrese un país")

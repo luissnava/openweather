@@ -104,7 +104,7 @@ const GlobalProviderState = ({ children }: GlobalProviderProps) => {
         addFavorites,
         removeFavorites
 
-    }), [weatherData, setWeatherData, favorites, setFavorites])
+    }), [weatherData, setWeatherData, favorites])
 
     return (
         <globalContext.Provider value={valueProvider}>

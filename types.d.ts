@@ -12,10 +12,10 @@ export interface WeatherData {
 // Definir el tipo para el contexto global
 export interface GlobalContext {
     weatherData: WeatherData;
-    favorites: Array[]
-    setWeatherData: () => void;
-    addFavorites: () => void
-    handleData: () => void;
+    favorites: WeatherData
+    setWeatherData: () => void
+    addFavorites: (data: WeatherData) => void
+    handleData: (country: string) => void
 }
 
 export interface Props {
