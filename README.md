@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather App 🌤️
 
-## Getting Started
+Esta aplicación permite a los usuarios consultar el clima actual de diferentes ciudades, guardar sus ciudades favoritas y ver información detallada del clima como temperatura, sensación térmica, humedad y velocidad del viento.
 
-First, run the development server:
+## Tecnologías Utilizadas 🛠️
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Frontend**:
+  - React
+  - Next.js 15
+  - Material UI
+  - react-icons
+  - TypeScript
+  - React Hooks (useState, useEffect)
+  - LocalStorage para persistencia de datos
+
+- **API Externa**:
+  - OpenWeatherMap API (`https://api.openweathermap.org/data/2.5/weather`)
+
+## Características ✨
+
+- Búsqueda de clima por nombre de ciudad
+- Visualización de datos meteorológicos (temperatura, sensación térmica, humedad, velocidad del viento)
+- Manejo de favoritos (agregar, eliminar, actualizar)
+- Persistencia de datos favoritos usando LocalStorage
+
+## Requisitos Previos 📋
+
+- Node.js (v22 o superior)
+- npm o yarn
+
+## Instrucciones de Instalación 🚀
+
+1. Clona el repositorio: 
+   ```bash
+   git clone 
+   cd weather-app
+   ```
+
+2. Instala las dependencias:
+   ```bash
+   npm install
+   # o
+   yarn install
+   ```
+
+3. Crea un archivo `.env.local` en la raíz del proyecto y agrega tu API key de OpenWeatherMap:
+   ```
+   NEXT_PUBLIC_API_KEY=tu_api_key_aquí
+   ```
+
+## Cómo Ejecutar el Proyecto 🏃‍♂️
+
+1. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   # o
+   yarn dev
+   ```
+
+2. Abre tu navegador y navega a:
+   ```
+   http://localhost:3000
+   ```
+
+## API Key de Prueba 🔑
+
+Para pruebas, puedes usar esta API key de OpenWeatherMap:
+```
+4331a28f89f94ebbc03938bcd82e4b50
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Nota**: Esta es una API key de prueba con límites de uso. Para un proyecto en producción, regístrate en [OpenWeatherMap](https://openweathermap.org/api) para obtener tu propia API key.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura del Proyecto 📁
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+weather-app/
+├── app/                 # Rutas y páginas de Next.js
+├── components/          # Componentes React reutilizables
+├── constants/           # Utilidades
+├── containers/          # Contenedores
+├── public/              # Archivos estáticos
+├── styles/              # Estilos CSS/SCSS
+└── types/               # Definiciones de TypeScript
+```
 
-## Learn More
+## Uso de la API 🌐
 
-To learn more about Next.js, take a look at the following resources:
+La aplicación utiliza la API de OpenWeatherMap para obtener datos meteorológicos. La URL base es:
+```
+https://api.openweathermap.org/data/2.5/weather
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Parámetros principales:
+- `q`: Nombre de la ciudad
+- `appid`: Tu API key
+- `lat`: latitud
+- `lon`: longitud
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ejemplo de solicitud:
+```
+https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lonn}&appid=${API_KEY}
+```
 
-## Deploy on Vercel
+## Notas de Implementación 📝
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Manejo de Favoritos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+La aplicación guarda favoritos en el localStorage utilizando una estructura de datos con los siguientes campos:
+
+```typescript
+interface WeatherData {
+    city: string
+    temperature: number
+    feels_like: number
+    humidity: number
+    wind_speed: number
+    description: string
+    icon: string
+    favorite: boolean
+}
+```
