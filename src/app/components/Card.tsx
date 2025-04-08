@@ -3,7 +3,6 @@ import { Card, Typography, CardContent, Box } from '@mui/material'
 import Image from 'next/image'
 import { useContext } from 'react'
 import { FaHeart,  } from 'react-icons/fa'
-import { IoMdClose } from "react-icons/io";
 import { globalContext } from '../context/globalcontext'
 
 const CardWeather = ( {data} : WeatherData) => {
@@ -18,8 +17,8 @@ const CardWeather = ( {data} : WeatherData) => {
         <>
             <Card className="w-full bg-gray-900 mt-10">
                 <CardContent className="p-4">
-                    <Box className="flex justify-end">
-                        <FaHeart onClick={()=> addFavorites(data)} color={data.favorite ? "red" : ""} size={24} />
+                    <Box className="flex justify-end" >
+                        <FaHeart onClick={()=> addFavorites(data)} color={data.favorite ? "red" : ""} size={24} className="cursor-pointer" />
                     </Box>
                     {/* Sección de la cabecera */}
                     <Box className="flex flex-col mb-6">
