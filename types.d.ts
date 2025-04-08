@@ -17,3 +17,7 @@ export interface GlobalContext {
     addFavorites: () => void
     handleData: () => void;
 }
+
+export interface Props {
+    data: WeatherData
+}

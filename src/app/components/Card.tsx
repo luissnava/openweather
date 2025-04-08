@@ -1,17 +1,18 @@
-import { WeatherData } from '../../../types'
+import { Props } from '../../../types'
 import { Card, Typography, CardContent, Box } from '@mui/material'
 import Image from 'next/image'
-import { useContext } from 'react'
+import { useContext} from 'react'
 import { FaHeart,  } from 'react-icons/fa'
 import { globalContext } from '../context/globalcontext'
 
-const CardWeather = ( {data} : WeatherData) => {
-
+const CardWeather = ( {data} : Props) => {
 
     const kelvinToCelsius = (temp: number) => Math.round(temp - 273.15);
     const tempCelsius = kelvinToCelsius(data.temperature);
     const feelsLike = kelvinToCelsius(data.feels_like);
     const {addFavorites} = useContext(globalContext)
+
+    
 
     return (
         <>
