@@ -89,25 +89,8 @@ const GlobalProviderState = ({ children }: GlobalProviderProps) => {
     };
 
 
-    const removeFavorites = (cityName: string) => {
-        setFavorites(prevFavorites =>
-            prevFavorites.filter(item => item.city !== cityName)
-        );
-    };
-
-    const valueProvider = useMemo(() => ({
-        favorites,
-        weatherData,
-        setFavorites,
-        setWeatherData,
-        handleData,
-        addFavorites,
-        removeFavorites
-
-    }), [weatherData, setWeatherData, favorites])
-
     return (
-        <globalContext.Provider value={valueProvider}>
+        <globalContext.Provider value={{handleData,addFavorites,weatherData,favorites}}>
             {children}
         </globalContext.Provider>
     )
