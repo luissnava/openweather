@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { globalContext } from "./globalcontext";
 import { apiKey } from "../constants";
 import { WeatherData } from "../../../types";
