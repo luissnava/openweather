@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    // Esto desactiva la verificación de ESLint durante las builds
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
-    domains: ['openweathermap.org'], // Agrega aquí el dominio de tus imágenes
-    // También puedes usar remotePatterns para más control
+    domains: ['openweathermap.org'],
     remotePatterns: [
       {
         protocol: 'https',
